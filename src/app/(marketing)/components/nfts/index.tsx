@@ -14,11 +14,11 @@ export default function NftForSale() {
               alt=""
               width={600}
               height={600}
-              style={{ objectFit: 'contain', width: '800px' }}
+              style={{ objectFit: 'contain', width: '700px' }}
             />
           </div>
           <div
-            className="border-1 absolute bottom-6 left-0 right-0 mx-auto w-[250px] rounded-[20px] py-[5px] pb-[20px] pt-[16px]"
+            className="border-1 absolute bottom-12 left-0 right-0 mx-auto w-[250px] rounded-[20px] py-[5px] pb-[20px] pt-[16px]"
             style={{
               background:
                 'linear-gradient(270deg, rgba(52, 32, 94, 0.4) 10.31%, rgba(129, 95, 145, 0.6) 104.49%)',
@@ -28,12 +28,12 @@ export default function NftForSale() {
             <p className="text-[18px] font-light text-text">Price</p>
             <p className="text-[48px] font-bold text-text">6.25 ETH</p>
           </div>
-          <div
+          {/* <div
             className="absolute bottom-0 left-0 right-0 mx-auto w-fit px-2 py-1 text-2xl font-semibold uppercase text-text"
             style={{ background: 'linear-gradient(90deg, #171D41 0%, #4C1AB6 100%)' }}
           >
             only 12 left!!!
-          </div>
+          </div> */}
         </div>
         <div className="flex flex-col items-start justify-center">
           <Countdown />
@@ -48,7 +48,7 @@ export default function NftForSale() {
       </div>
 
       {/*bottom */}
-      <div className="mt-24">
+      <div className="mt-[3%]">
         <Image
           src={'/images/sponsors.png'}
           alt=""

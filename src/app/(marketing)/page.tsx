@@ -1,5 +1,4 @@
 'use client';
-
 import './home.module.css';
 import NftForSale from './components/nfts';
 import { Carousel } from 'react-responsive-carousel';
@@ -23,22 +22,22 @@ export default function HomePage() {
         interval={5000}
         infiniteLoop
       >
-        <div className="px-[10%] pt-[100px]">
+        <div className="px-[100px] pt-[5%]">
           <NftForSale />
         </div>
-        <div className="px-[10%]">
+        <div className="px-[100px]">
           <AboutUs />
         </div>
-        <div className="h-full px-[10%]">
+        <div className="h-full px-[100px]">
           <TechStack />
         </div>
-        <div className="px-[10%] pt-[8%]">
+        <div className="px-[100px] pt-[8%]">
           <Tokenomic />
         </div>
-        <div className="px-[10%] pt-[8%]">
+        <div className="px-[100px] pt-[8%]">
           <Creators />
         </div>
-        <div className="px-[10%] pt-[8%]">
+        <div className="px-[100px] pt-[8%]">
           <Testimonials />
         </div>
       </Carousel>

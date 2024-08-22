@@ -19,8 +19,8 @@ export default function AboutUs() {
                   className="ml-10 mt-5"
                   src={'/images/Idea.png'}
                   alt=""
-                  width={100}
-                  height={100}
+                  width={1000}
+                  height={1000}
                   style={{ width: '100px', scale: 3 }}
                 />
               </span>
@@ -39,7 +39,7 @@ export default function AboutUs() {
                   alt=""
                   width={500}
                   height={500}
-                  style={{ scale: 1.1 }}
+                  style={{ objectFit: 'contain', width: '500px' }}
                 />
               </div>
               {/* <div className="absolute left-[-30%] top-[-30%]">
@@ -54,7 +54,7 @@ export default function AboutUs() {
         </div>
 
         {/*bottom */}
-        <div className="mt-16">
+        <div className="mt-[8%]">
           <Image
             src={'/images/sponsors.png'}
             alt=""

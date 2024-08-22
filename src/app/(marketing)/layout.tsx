@@ -3,6 +3,7 @@ import { cn } from '@/libs/utils';
 import { ThemeProvider } from '@/components/theme-provider';
 import '../globals.css';
 import { raleway } from '../fonts';
+import { Web3Modal } from '../connect-wallet/components/config';
 
 export const metadata: Metadata = {
   title: 'Studihub - Online Learning Platform',
@@ -38,9 +39,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning={true}>
       <body className={cn(raleway.className, 'lining-nums', "bg-[url('/images/bg.svg')] bg-cover")}>
-        <div className="relative flex flex-col overflow-x-hidden">{children}</div>
+        <div className="relative flex flex-col overflow-x-hidden">
+          <Web3Modal>{children}</Web3Modal>
+        </div>
       </body>
     </html>
   );
