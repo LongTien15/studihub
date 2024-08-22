@@ -13,7 +13,6 @@
     "re-start": "rm -rf node_modules .next out dist build && pnpm install && pnpm dev",
     "re-build": "rm -rf node_modules .next out dist build && pnpm install && pnpm build",
     "re-build-test": "rm -rf node_modules .next out dist build && npm install && npm run build",
-    "prepare": "./prepare-setups.sh",
     "husky-setup": "npx husky install && npx husky add .husky/pre-commit \"pnpm lint-staged\" && npx husky add .husky/commit-msg 'npx --no -- commitlint --edit ${1}'"
   },
   "dependencies": {
