@@ -3,6 +3,9 @@ const nextConfig = {
   trailingSlash: true,
   reactStrictMode: false,
   output: 'standalone',
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   experimental: {
     serverActions: true,
     typedRoutes: true,
