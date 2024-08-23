@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import '../globals.css';
 import { raleway } from '../fonts';
 import { Web3Modal } from '../connect-wallet/components/config';
+import AppWalletProvider from './components/nfts/components/AppWalletProvider';
 
 export const metadata: Metadata = {
   title: 'Studihub - Online Learning Platform',
@@ -42,7 +43,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning={true}>
       <body className={cn(raleway.className, 'lining-nums', "bg-[url('/images/bg.svg')] bg-cover")}>
         <div className="relative flex flex-col overflow-x-hidden">
-          <Web3Modal>{children}</Web3Modal>
+          <AppWalletProvider>{children}</AppWalletProvider>
         </div>
       </body>
     </html>

@@ -1,49 +1,33 @@
-// context/Web3Modal.tsx
+// App.tsx
+'use client ';
+import { createWeb3Modal, defaultSolanaConfig } from '@web3modal/solana/react';
+import { solana, solanaTestnet, solanaDevnet } from '@web3modal/solana/chains';
 
-'use client';
+// 0. Setup chains
+const chains = [solana, solanaTestnet, solanaDevnet];
 
-import { createWeb3Modal, defaultConfig } from '@web3modal/ethers/react';
+// 1. Get projectId from https://cloud.walletconnect.com
+const projectId = '0236e48122ad716b2b7ba4a83a0d4ab8';
 
-// Your WalletConnect Cloud project ID
-export const projectId = '0236e48122ad716b2b7ba4a83a0d4ab8';
-
-// 2. Set chains
-const mainnet = {
-  chainId: 1,
-  name: 'Ethereum',
-  currency: 'ETH',
-  explorerUrl: 'https://etherscan.io',
-  rpcUrl: 'https://cloudflare-eth.com',
-};
-
-// 3. Create a metadata object
+// 2. Create solanaConfig
 const metadata = {
-  name: 'Sudio',
-  description: 'AppKit Example',
+  name: 'AppKit',
+  description: 'AppKit Solana Example',
   url: 'https://web3modal.com', // origin must match your domain & subdomain
   icons: ['https://avatars.githubusercontent.com/u/37784886'],
 };
 
-// 4. Create Ethers config
-const ethersConfig = defaultConfig({
-  /*Required*/
+const solanaConfig = defaultSolanaConfig({
   metadata,
-
-  /*Optional*/
-  enableEIP6963: true, // true by default
-  enableInjected: true, // true by default
-  enableCoinbase: true, // true by default
-  rpcUrl: '...', // used for the Coinbase SDK
-  defaultChainId: 1, // used for the Coinbase SDK
+  chains,
+  projectId,
 });
 
-// 5. Create a Web3Modal instance
+// 3. Create modal
 createWeb3Modal({
-  ethersConfig,
-  chains: [mainnet],
+  solanaConfig,
+  chains,
   projectId,
-  enableAnalytics: true, // Optional - defaults to your Cloud configuration
-  enableOnramp: true, // Optional - false as default
 });
 
 export function Web3Modal({ children }: { children: any }) {

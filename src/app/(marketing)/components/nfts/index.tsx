@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Countdown from './components/countdown';
 import BuyNowButton from './components/button';
+import { BuyDialog } from './components/buy-dialog';
 
 export default function NftForSale() {
   return (
