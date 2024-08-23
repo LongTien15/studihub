@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 function calculateTimeLeft() {
   const year = new Date().getFullYear();
   const difference = +new Date(`${year}-10-1`) - +new Date();
-  let timeLeft = { days: '0 D', hours: '0 H', minutes: '0 M', seconds: '0 S' };
+  let timeLeft = { days: '0d', hours: '0h', minutes: '0m', seconds: '0s' };
 
   if (difference > 0) {
     const days = Math.floor(difference / (1000 * 60 * 60 * 24));
@@ -12,10 +12,10 @@ function calculateTimeLeft() {
     const minutes = Math.floor((difference / 1000 / 60) % 60);
     const seconds = Math.floor((difference / 1000) % 60);
     timeLeft = {
-      days: (days < 10 ? '0' + days : days) + ' D',
-      hours: (hours < 10 ? '0' + hours : hours) + ' H',
-      minutes: (minutes < 10 ? '0' + minutes : minutes) + ' M',
-      seconds: (seconds < 10 ? '0' + seconds : seconds) + ' S',
+      days: (days < 10 ? '0' + days : days) + 'd',
+      hours: (hours < 10 ? '0' + hours : hours) + 'h',
+      minutes: (minutes < 10 ? '0' + minutes : minutes) + 'm',
+      seconds: (seconds < 10 ? '0' + seconds : seconds) + 's',
     };
   }
 

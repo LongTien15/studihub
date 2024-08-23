@@ -117,14 +117,20 @@ export function BuyDialog({ children }: { children: React.ReactNode }) {
               <div>
                 <p className="text-3xl font-bold">
                   Purchasing
-                  <span className="italic"> Name of the NFT 101</span>
+                  <span> StudiHub's First-Ever NFT Release!</span>
                 </p>
                 <p className="mt-3">0.1 SOL</p>
               </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-3">
                 <p className="text-lg font-semibold">Referral Code</p>
                 <Input />
                 <Input placeholder="input address" onChange={(v) => setAdd(v.target.value)} />
+                <Input
+                  defaultValue={1}
+                  placeholder="Number of NFTS"
+                  type="number"
+                  className="[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                />
                 <p className="text-sm font-normal text-[#64748B]">
                   Referral code let us know who introduces you!
                 </p>
