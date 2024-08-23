@@ -38,11 +38,13 @@ export default function NftForSale() {
         </div>
         <div className="flex flex-col items-start justify-center">
           <Countdown />
-          <div className="mt-14">
-            <p className="mb-6 text-start text-lg font-extralight uppercase text-text">
-              buy an nft
+          <div className="mb-5 mt-14">
+            <p className="mb-6 text-start text-lg font-extralight text-text">
+              StudiHub Genesis NFT Drop
             </p>
-            <p className="text-start text-[84px] font-extrabold text-[#fff]">Name of the NFT 100</p>
+            <p className="text-start text-4xl font-extrabold text-[#fff]">
+              Unlock the Future of Learning with StudiHub's First-Ever NFT Release!
+            </p>
           </div>
           <BuyNowButton />
         </div>

@@ -4,23 +4,24 @@ import { useEffect, useState } from 'react';
 function calculateTimeLeft() {
   const year = new Date().getFullYear();
   const difference = +new Date(`${year}-10-1`) - +new Date();
-  let timeLeft = {};
+  let timeLeft = { days: '0 D', hours: '0 H', minutes: '0 M', seconds: '0 S' };
 
   if (difference > 0) {
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((difference / 1000 / 60) % 60);
+    const seconds = Math.floor((difference / 1000) % 60);
     timeLeft = {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / 1000 / 60) % 60),
-      seconds: Math.floor((difference / 1000) % 60),
+      days: (days < 10 ? '0' + days : days) + ' D',
+      hours: (hours < 10 ? '0' + hours : hours) + ' H',
+      minutes: (minutes < 10 ? '0' + minutes : minutes) + ' M',
+      seconds: (seconds < 10 ? '0' + seconds : seconds) + ' S',
     };
   }
 
   return timeLeft;
 }
 
-const renderNumber = (num: number) => {
-  return num < 10 ? '0' + num : num.toString();
-};
 export default function Countdown() {
   const [timeLeft, setTimeLeft] = useState<any>(calculateTimeLeft());
   useEffect(() => {
@@ -35,13 +36,13 @@ export default function Countdown() {
 
   return (
     <div className="flex items-center gap-4">
-      <DigitBox number={renderNumber(timeLeft?.days || 0)} />
+      <DigitBox number={timeLeft?.days} />
       <Divider />
-      <DigitBox number={renderNumber(timeLeft?.hours || 0)} />
+      <DigitBox number={timeLeft?.hours} />
       <Divider />
-      <DigitBox number={renderNumber(timeLeft?.minutes || 0)} />
+      <DigitBox number={timeLeft?.minutes} />
       <Divider />
-      <DigitBox number={renderNumber(timeLeft?.seconds || 0)} />
+      <DigitBox number={timeLeft?.seconds} />
     </div>
   );
 }
@@ -49,7 +50,7 @@ export default function Countdown() {
 const DigitBox = ({ number }: { number: string }) => {
   return (
     <div
-      className="w-[90px] gap-6 rounded-2xl p-[24px] text-3xl font-semibold text-text-2"
+      className="w-[100px] gap-6 rounded-2xl px-[14px] py-[26px] text-3xl font-semibold text-text-2"
       style={{
         background:
           'radial-gradient(50.01% 50.01% at 50% 45.62%, rgba(42, 66, 106, 0.3) 0%, rgba(17, 16, 16, 0.3) 100%)',
