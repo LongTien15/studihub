@@ -3,7 +3,6 @@ import { cn } from '@/libs/utils';
 import { ThemeProvider } from '@/components/theme-provider';
 import '../globals.css';
 import { raleway } from '../fonts';
-import { Web3Modal } from '../connect-wallet/components/config';
 import AppWalletProvider from './components/nfts/components/AppWalletProvider';
 
 export const metadata: Metadata = {
