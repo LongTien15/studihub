@@ -31,7 +31,7 @@ export default function Header() {
   ];
 
   return (
-    <div className="text-white md:flex md:items-center md:p-8">
+    <div className="hidden text-white md:flex md:items-center md:p-8">
       <Image src={'/images/logo.png'} alt="" width={160} height={100} className="mr-8" />
       <div className="flex gap-3">
         {menuItems.map((item, index) => (
