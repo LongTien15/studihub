@@ -22,6 +22,7 @@ import {
 import Image from 'next/image';
 import React, { Component, useState } from 'react';
 import { BuySuccess } from './BuySuccess';
+import { coundownDate } from './countdown';
 
 const checkValidAddress = (input: string) => {
   try {
@@ -40,6 +41,7 @@ const getConfirmation = async (connection: Connection, tx: string) => {
 };
 
 export function BuyDialog({ children }: { children: React.ReactNode }) {
+  const isOpen = new Date(coundownDate).getTime() - new Date().getTime() < 0;
   const { sendTransaction, publicKey } = useWallet();
   const { connection } = useConnection();
   const [add, setAdd] = useState<string>('');
@@ -91,8 +93,26 @@ export function BuyDialog({ children }: { children: React.ReactNode }) {
       alert('Error sending transactions');
     }
   };
+  return !isOpen ? (
+    <div className="relative cursor-pointer">
+      <div className="fancy absolute z-10 mt-5">
+        <div className="input mt-8 flex h-[60px] w-fit items-center justify-center gap-2 rounded-full">
+          <div className="h-[25px] w-[26px]">
+            <Image src={'/images/star_button.png'} alt="" width={26} height={25} />
+          </div>
+          <p className="text-lg font-semibold text-[#fff]">{'Incoming'}</p>
+        </div>
+      </div>
 
-  return (
+      <Image
+        src="/images/particle.gif"
+        alt=""
+        className="absolute left-0 top-0"
+        width={240}
+        height={60}
+      />
+    </div>
+  ) : (
     <>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>{children}</DialogTrigger>
@@ -105,13 +125,13 @@ export function BuyDialog({ children }: { children: React.ReactNode }) {
             backdropFilter: 'blur(50px)',
           }}
         >
-          <div className="grid grid-cols-2 gap-6 py-4">
+          <div className="flex flex-col gap-6 py-4 md:grid md:grid-cols-2">
             <Image
-              src={'/images/nft_small.png'}
+              src={'/images/nft_img.png'}
               alt=""
               width={500}
               height={400}
-              style={{ objectFit: 'contain', height: '500px' }}
+              style={{ objectFit: 'contain', height: '300px' }}
             />
             <div className="flex flex-col gap-6">
               <div>
@@ -124,7 +144,7 @@ export function BuyDialog({ children }: { children: React.ReactNode }) {
               <div className="flex flex-col gap-3">
                 <p className="text-lg font-semibold">Referral Code</p>
                 <Input />
-                <Input placeholder="input address" onChange={(v) => setAdd(v.target.value)} />
+                {/* <Input placeholder="input address" onChange={(v) => setAdd(v.target.value)} /> */}
                 <Input
                   defaultValue={1}
                   placeholder="Number of NFTS"

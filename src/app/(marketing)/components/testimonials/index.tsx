@@ -4,12 +4,12 @@ export default function Testimonials() {
   return (
     <div>
       <div className="flex flex-col gap-6">
-        <p className="text-5xl font-extrabold uppercase text-white">TESTIMONIALS</p>
+        <p className="text-2xl font-extrabold uppercase text-white md:text-5xl">TESTIMONIALS</p>
         <p className="text-base text-text-2">
           See what other learners think of us and our courses!
         </p>
 
-        <div className="grid grid-cols-3 gap-8 pt-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:pt-12">
           <ReviewCard
             avatar="/images/avatar.png"
             name="Mariam Mostafa"

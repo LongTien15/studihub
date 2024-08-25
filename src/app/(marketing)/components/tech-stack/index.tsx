@@ -3,14 +3,14 @@ import Image from 'next/image';
 export default function TechStack() {
   return (
     <div className="flex h-full flex-col items-center justify-center">
-      <p className="text-text mb-8 text-5xl font-extrabold uppercase">technology stack</p>
-      <p className="text-text-2 text-lg font-normal">
+      <p className="mb-8 font-extrabold uppercase text-text md:text-5xl">technology stack</p>
+      <p className="font-normal text-text-2 md:text-lg">
         Users register, explore suitable courses, engage in interactive learning, and earn
         verifiable certificates upon course completion. They can also interact with a global
         learning community to enhance their educational experience
       </p>
 
-      <div className="mt-16 grid grid-cols-3 gap-12">
+      <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-3">
         <Item
           image="/images/ai.png"
           title="Artificial Intelligence (AI)"
@@ -35,7 +35,7 @@ Tokens (NFTs)"
 const Item = ({ image, title, content }: { image: string; title: string; content: string }) => {
   return (
     <div
-      className="flex flex-col items-center gap-6 rounded-3xl px-4 py-8"
+      className="flex items-center gap-6 rounded-3xl px-4 py-8 md:flex-col"
       style={{
         border: '1px solid white',
         boxShadow: ' 0px 4px 6px 0px #00000017',
@@ -53,8 +53,10 @@ const Item = ({ image, title, content }: { image: string; title: string; content
           style={{ width: 'auto', height: '182px' }}
         />
       </div>
-      <p className="text-text text-center text-2xl font-semibold">{title}</p>
-      <p className="text-text-2 text-center text-base font-normal">{content}</p>
+      <div className="flex flex-col md:block">
+        <p className="text-center font-semibold text-text md:text-2xl">{title}</p>
+        <p className="text-center font-normal text-text-2 md:text-base">{content}</p>
+      </div>
     </div>
   );
 };

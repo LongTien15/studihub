@@ -3,20 +3,22 @@ import BuyNowButton from '../nfts/components/button';
 
 export default function AboutUs() {
   return (
-    <div className="flex flex-col">
-      <div className="flex">
+    <div className="flex w-full flex-col">
+      <div className="hidden md:flex">
         <BuyNowButton text="Start learning today!" />
       </div>
       <div>
         {/* top */}
-        <div className="mt-[5%] grid grid-cols-2 gap-20">
+        <div className="mt-[5%] flex grid-cols-2 flex-col md:grid md:gap-20">
           <div className="flex flex-col justify-center align-middle">
-            <p className="mb-7 text-start text-lg font-normal uppercase text-text">about us</p>
-            <p className="text-start text-[84px] font-extrabold text-text">
+            <p className="mb-3 text-start text-sm font-normal uppercase text-text md:mb-7 md:text-lg">
+              about us
+            </p>
+            <p className="text-start text-5xl font-extrabold text-text md:text-[84px]">
               Learn, Prepare, and Thrive
-              <span>
+              <span className="hidden md:inline-block">
                 <Image
-                  className="ml-10 mt-5"
+                  className="ml-6"
                   src={'/images/Idea.png'}
                   alt=""
                   width={1000}
@@ -25,7 +27,7 @@ export default function AboutUs() {
                 />
               </span>
             </p>
-            <p className="mt-7 text-start text-lg font-normal text-text-2">
+            <p className="mt-7 text-start text-xs font-normal text-text-2 md:text-lg">
               Studihub aims to transform education through cutting-edge technology, providing
               accessible and transparent learning opportunities for everyone, and helping learners
               realize their full potential.
@@ -51,10 +53,13 @@ export default function AboutUs() {
               </div> */}
             </div>
           </div>
+          <div className="flex justify-center md:hidden">
+            <BuyNowButton text="Start learning today!" />
+          </div>
         </div>
 
         {/*bottom */}
-        <div className="mt-[8%]">
+        <div className="mt-[8%] hidden md:block">
           <Image
             src={'/images/sponsors.png'}
             alt=""

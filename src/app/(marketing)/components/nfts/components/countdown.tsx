@@ -1,9 +1,11 @@
 'use client';
 import { useEffect, useState } from 'react';
 
+export const coundownDate = '2024-08-26T19:00:00';
+
 function calculateTimeLeft() {
   const year = new Date().getFullYear();
-  const difference = +new Date(`${year}-10-1`) - +new Date();
+  const difference = +new Date(coundownDate) - +new Date();
   let timeLeft = { days: '0d', hours: '0h', minutes: '0m', seconds: '0s' };
 
   if (difference > 0) {
@@ -35,7 +37,7 @@ export default function Countdown() {
   });
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex w-full items-center justify-center gap-4 md:justify-start">
       <DigitBox number={timeLeft?.days} />
       <Divider />
       <DigitBox number={timeLeft?.hours} />
@@ -50,7 +52,7 @@ export default function Countdown() {
 const DigitBox = ({ number }: { number: string }) => {
   return (
     <div
-      className="w-[100px] gap-6 rounded-2xl px-[14px] py-[26px] text-3xl font-semibold text-text-2"
+      className="gap-6 rounded-md px-2 py-2 font-semibold text-text-2 md:w-[100px] md:rounded-2xl md:px-[14px] md:py-[26px] md:text-3xl"
       style={{
         background:
           'radial-gradient(50.01% 50.01% at 50% 45.62%, rgba(42, 66, 106, 0.3) 0%, rgba(17, 16, 16, 0.3) 100%)',
@@ -62,5 +64,5 @@ const DigitBox = ({ number }: { number: string }) => {
 };
 
 const Divider = () => {
-  return <h1 className="text-5xl font-extrabold text-[#64748B]">:</h1>;
+  return <h1 className="font-extrabold text-[#64748B] md:text-5xl">:</h1>;
 };

@@ -22,22 +22,22 @@ export default function HomePage() {
         interval={5000}
         infiniteLoop
       >
-        <div className="px-[100px] pt-[5%]">
+        <div className="w-full px-4 pt-8 md:px-[100px]">
           <NftForSale />
         </div>
-        <div className="px-[100px]">
+        <div className="px-6 pt-7 md:px-[100px] md:pt-[50px]">
           <AboutUs />
         </div>
-        <div className="h-full px-[100px]">
+        <div className="h-full px-6 pt-[100px] md:px-[100px] md:pt-0">
           <TechStack />
         </div>
-        <div className="px-[100px] pt-[8%]">
+        <div className="pt-[8%] md:px-[100px]">
           <Tokenomic />
         </div>
-        <div className="px-[100px] pt-[8%]">
+        <div className="pt-[8%] md:px-[100px]">
           <Creators />
         </div>
-        <div className="px-[100px] pt-[8%]">
+        <div className="px-6 pt-[8%] md:px-[100px]">
           <Testimonials />
         </div>
       </Carousel>

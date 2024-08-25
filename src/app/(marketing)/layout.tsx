@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import '../globals.css';
 import { raleway } from '../fonts';
 import AppWalletProvider from './components/nfts/components/AppWalletProvider';
+import Header from './components/header';
 
 export const metadata: Metadata = {
   title: 'Studihub - Online Learning Platform',
@@ -42,6 +43,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning={true}>
       <body className={cn(raleway.className, 'lining-nums', "bg-[url('/images/bg.svg')] bg-cover")}>
         <div className="relative flex flex-col overflow-x-hidden">
+          <Header />
           <AppWalletProvider>{children}</AppWalletProvider>
         </div>
       </body>
