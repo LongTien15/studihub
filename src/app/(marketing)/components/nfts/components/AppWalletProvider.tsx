@@ -13,7 +13,7 @@ require('@solana/wallet-adapter-react-ui/styles.css');
 // imports here
 
 export default function AppWalletProvider({ children }: { children: React.ReactNode }) {
-  const network = WalletAdapterNetwork.Devnet;
+  const network = WalletAdapterNetwork.Mainnet;
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
   const wallets = useMemo(
     () => [
@@ -24,7 +24,11 @@ export default function AppWalletProvider({ children }: { children: React.ReactN
   );
 
   return (
-    <ConnectionProvider endpoint={endpoint}>
+    <ConnectionProvider
+      endpoint={
+        'https://proud-special-market.solana-mainnet.quiknode.pro/7fcb14376f7e079d95e002d51f1ff7c9677c04e5'
+      }
+    >
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>{children}</WalletModalProvider>
       </WalletProvider>

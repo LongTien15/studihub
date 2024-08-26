@@ -47,11 +47,12 @@ export function BuyDialog({ children }: { children: React.ReactNode }) {
   const [add, setAdd] = useState<string>('');
   const [open, setOpen] = useState<boolean>(false);
   const [openSuccess, setOpenSuccess] = useState<boolean>(false);
+  const [total, setTotal] = useState<number>(1);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const createTransaction = async () => {
-    const receiver = checkValidAddress(add);
-    if (!receiver) {
-      alert('Address not valid');
+    if (total <= 0) {
+      alert('Total must be one or more');
       return;
     }
     if (!publicKey) {
@@ -60,16 +61,17 @@ export function BuyDialog({ children }: { children: React.ReactNode }) {
     }
 
     try {
+      setLoading(true);
+
       // 1 SOL = 1,000,000,0 = 10^9
       const txs = new Transaction().add(
         SystemProgram.transfer({
           fromPubkey: publicKey,
-          toPubkey: receiver,
+          toPubkey: new PublicKey('Hi4w39PDHGTT3WWD34KJHTcw4AhHuAcexWDwZR3Vs9YS'),
           // 0.01 SOL
-          lamports: 10000000,
+          lamports: 50000000 * total,
         })
       );
-
       const signature = await sendTransaction(txs, connection);
       const latestBlockHash = await connection.getLatestBlockhash();
 
@@ -81,16 +83,18 @@ export function BuyDialog({ children }: { children: React.ReactNode }) {
 
       const result = await getConfirmation(connection, signature);
       console.log(result);
-
+      setLoading(false);
       if (result) {
         // alert('Send Transaction successfully');
+
         setOpen(false);
 
         setOpenSuccess(true);
       }
     } catch (error) {
       console.log(error);
-      alert('Error sending transactions');
+      setLoading(false);
+      // alert('Error sending transactions');
     }
   };
   return !isOpen ? (
@@ -139,14 +143,15 @@ export function BuyDialog({ children }: { children: React.ReactNode }) {
                   Purchasing
                   <span> StudiHub's First-Ever NFT Release!</span>
                 </p>
-                <p className="mt-3">0.1 SOL</p>
+                <p className="mt-3">0.5 SOL</p>
               </div>
               <div className="flex flex-col gap-3">
                 <p className="text-lg font-semibold">Referral Code</p>
                 <Input />
                 {/* <Input placeholder="input address" onChange={(v) => setAdd(v.target.value)} /> */}
                 <Input
-                  defaultValue={1}
+                  value={total}
+                  onChange={(v) => setTotal(Number(v.target.value))}
                   placeholder="Number of NFTS"
                   type="number"
                   className="[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
@@ -162,11 +167,12 @@ export function BuyDialog({ children }: { children: React.ReactNode }) {
                 </div>
                 <div className="mt-2 flex justify-between">
                   <p className="text-sm">Total: </p>
-                  <p className="font-semibold">0.5 SOL</p>
+                  <p className="font-semibold">{0.5 * total} SOL</p>
                 </div>
               </div>
               <Button
                 onClick={createTransaction}
+                disabled={loading}
                 className=""
                 style={{ background: 'linear-gradient(90deg, #9747FF 0%, #EA1187 100%)' }}
               >
