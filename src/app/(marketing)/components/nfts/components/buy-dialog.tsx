@@ -97,7 +97,7 @@ export function BuyDialog({ children }: { children: React.ReactNode }) {
       // alert('Error sending transactions');
     }
   };
-  return !isOpen ? (
+  return false ? (
     <div className="relative cursor-pointer">
       <div className="fancy absolute z-10 mt-5">
         <div className="input mt-8 flex h-[60px] w-fit items-center justify-center gap-2 rounded-full">
